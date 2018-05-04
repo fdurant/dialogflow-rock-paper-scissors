@@ -102,3 +102,7 @@ ENV/
 
 # Emacs backup files
 *~
+
+# Files with secrets
+client_secret.json
+service_account.json

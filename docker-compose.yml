@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  dialog:
+    build:
+      context: ./dialog
+      dockerfile: Dockerfile
+    container_name: rock-paper-scissors_dialog
+    env_file: .env
+    secrets:
+      - google_service_account.json
+
+secrets:
+  google_service_account.json:
+    file: ./service_account.json
