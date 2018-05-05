@@ -1,0 +1,7 @@
+<s>start</s>
+<s>back to menu</s>
+<s>back to main menu</s>
+<s>back to start</s>
+<s>start all over again</s>
+<s>start again</s>
+<s>back to the beginning</s>

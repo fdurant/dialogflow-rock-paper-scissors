@@ -1,0 +1,12 @@
+<s><choice>rock</choice></s>
+<s><choice r="rock">stone</choice></s>
+<s><choice>paper</choice></s>
+<s><choice r="paper">paper sheet</choice></s>
+<s><choice r="scissors">scissor</choice></s>
+<s><choice>scissors</choice></s>
+<s>i choose <choice>rock</choice></s>
+<s>i take <choice r="rock">stone</choice></s>
+<s>let me pick <choice>paper</choice></s>
+<s>i want <choice r="paper">paper sheet</choice></s>
+<s>i select <choice r="scissors">scissor</choice></s>
+<s>let me select <choice>scissors</choice></s>
