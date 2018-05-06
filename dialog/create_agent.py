@@ -171,23 +171,35 @@ def createIntents():
     # Walk through the resource files and create the intents from there
     intentsDir = args['resourceDir']+'/intents'
     intentDirnames = os.listdir(intentsDir)
+    counter = 1
     for intentDirname in intentDirnames:
-        displayName = shortName2DisplayName(intentDirname)
-        logging.info('Starting creation of intent with display name "{}"'.format(displayName))
+        intentDisplayName = shortName2DisplayName(intentDirname)
+        logging.info('Starting creation of intent with display name "{}"'.format(intentDisplayName))
         trainingFileName = intentsDir + '/' + intentDirname + '/' + args['lang'] + '/' + 'training.txt'
         trainingPhrases = getTrainingPhrases(trainingFileName)
         logging.debug('Training file "{}" contains {} phrase{}'.format(trainingFileName,
                                                                        len(trainingPhrases),
                                                                        's' if len(trainingPhrases)> 0 else ''))
-        
-        intent = dialogflow_v2.types.Intent(display_name = displayName,
+        # Only parse the *current* intent's training data
+        entityDoD = extractEntityTypesValuesAndSynonymsFromTrainingData([intentDirname])
+        parameters = []
+        for entityTypeName in entityDoD.keys():
+            logging.info("entityTypeName = {}".format(entityTypeName))
+            parameter = dialogflow_v2.types.Intent.Parameter(display_name = entityTypeName,
+                                                             entity_type_display_name = '@'+str(entityTypeName)
+                                                             )
+            parameters.append(parameter)
+        intent = dialogflow_v2.types.Intent(display_name = intentDisplayName,
                                             training_phrases = trainingPhrases,
-                                            messages=[])
+                                            messages=[],
+                                            action='Action_{}'.format(counter)
+#                                            parameters=parameters
+                                            )
         response = intentsClient.create_intent(parent,intent)
         logging.info('Done creating intent with shortened name "{}"'.format(intentDirname))
+        counter += 1
 
-
-def extractEntityTypesValuesAndSynonymsFromTrainingData():
+def extractEntityTypesValuesAndSynonymsFromTrainingData(selectedIntentDirnames = []):
     # Returns a dictionary of dictionaries where:
     # Key = entityType (e.g. 'choice'
     # Value = dictionary of
@@ -198,8 +210,13 @@ def extractEntityTypesValuesAndSynonymsFromTrainingData():
     entityDictOfDict = {}
 
     # Walk through the resource files and create the intents from there
+    intentDirnames = []
     intentsDir = args['resourceDir']+'/intents'
-    intentDirnames = os.listdir(intentsDir)
+    if len(selectedIntentDirnames) > 0:
+        intentDirnames = selectedIntentDirnames
+    else:
+        # Select all of them
+        intentDirnames = os.listdir(intentsDir)
     for intentDirname in intentDirnames:
         trainingFileName = intentsDir + '/' + intentDirname + '/' + args['lang'] + '/' + 'training.txt'
         try:
@@ -297,10 +314,10 @@ if __name__ == "__main__":
     logging.debug('AFTER entity cleanup')
     listEntityTypes()    
 
-    createIntents()
-    
     entityDictOfDicts = extractEntityTypesValuesAndSynonymsFromTrainingData()
     logging.info('entityDictOfDicts = "{}"'.format(json.dumps(entityDictOfDicts)))
     
     createEntityTypes(entityDictOfDicts)
     createEntities(entityDictOfDicts)
+
+    createIntents()
