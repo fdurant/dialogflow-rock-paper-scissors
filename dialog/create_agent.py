@@ -13,6 +13,7 @@ import re
 import json
 from xmljson import badgerfish as bf, gdata
 from lxml.etree import fromstring, tostring
+from time import sleep
 
 def init():
     #Read environment variables
@@ -307,6 +308,8 @@ if __name__ == "__main__":
     deleteAllIntents()
     logging.debug('AFTER intent cleanup')
     listIntents()
+
+    sleep(10)
 
     listEntityTypes()
     logging.debug('BEFORE entity cleanup')

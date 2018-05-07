@@ -8,5 +8,6 @@
 <s>i take <choice r="rock">stone</choice></s>
 <s>let me pick <choice>paper</choice></s>
 <s>i want <choice r="paper">paper sheet</choice></s>
+<s>i want <choice>paper</choice></s>
 <s>i select <choice r="scissors">scissor</choice></s>
 <s>let me select <choice>scissors</choice></s>
