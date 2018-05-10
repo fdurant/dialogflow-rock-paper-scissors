@@ -317,10 +317,10 @@ if __name__ == "__main__":
     logging.debug('AFTER entity cleanup')
     listEntityTypes()    
 
-    entityDictOfDicts = extractEntityTypesValuesAndSynonymsFromTrainingData()
-    logging.info('entityDictOfDicts = "{}"'.format(json.dumps(entityDictOfDicts)))
+#    entityDictOfDicts = extractEntityTypesValuesAndSynonymsFromTrainingData()
+#    logging.info('entityDictOfDicts = "{}"'.format(json.dumps(entityDictOfDicts)))
     
-    createEntityTypes(entityDictOfDicts)
-    createEntities(entityDictOfDicts)
+#    createEntityTypes(entityDictOfDicts)
+#    createEntities(entityDictOfDicts)
 
-    createIntents()
+#    createIntents()

@@ -9,6 +9,15 @@ services:
     secrets:
       - google_service_account.json
 
+  jovo:
+    build:
+      context: ./jovo
+      dockerfile: Dockerfile
+    container_name: rock-paper-scissors_jovo
+    env_file: .env
+    secrets:
+      - google_service_account.json
+    
 secrets:
   google_service_account.json:
     file: ./service_account.json
