@@ -11,8 +11,11 @@ services:
 
   jovo:
     build:
-      context: ./jovo
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./jovo/Dockerfile
+      args:
+        - PROJECTID=${PROJECTID}
+        - GOOGLE_APPLICATION_CREDENTIALS_SOURCE=${GOOGLE_APPLICATION_CREDENTIALS_SOURCE}
     container_name: rock-paper-scissors_jovo
     env_file: .env
     secrets:
