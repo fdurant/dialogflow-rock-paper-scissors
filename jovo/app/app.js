@@ -19,16 +19,28 @@ const app = new App(config);
 
 app.setHandler({
     'LAUNCH': function() {
-        this.toIntent('HelloWorldIntent');
+        this.toIntent('RockPaperScissorsQuestionIntent');
     },
 
-    'HelloWorldIntent': function() {
-        this.ask('Hello World! What\'s your name?', 'Please tell me your name.');
+    'Default Fallback Intent': function() {
+        this.toIntent('RockPaperScissorsQuestionIntent');
     },
 
-    'MyNameIsIntent': function(name) {
-        this.tell('Hey ' + name.value + ', nice to meet you!');
+    'Default Welcome Intent': function() {
+        this.toIntent('RockPaperScissorsQuestionIntent');
     },
+
+    'RockPaperScissorsQuestionIntent': function() {
+        this.ask('Rock, paper or scissors? Pick one',
+		 'Rock, paper or scissors?');
+    },
+
+    'RockPaperScissorsChoiceIntent': function(rps) {
+        this.tell('You chose ' + rps.value + '!',
+		  'You picked ' + rps.value + '!',
+		  'OK, ' + rps.value + ' you chose!');
+    }
+
 });
 
 module.exports.app = app;
