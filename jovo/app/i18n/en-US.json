@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "RPS_QUESTION": [
+      "Rock, paper or scissors? Pick one",
+      "Rock, paper or scissors?",
+      "Rock, paper or scissors? Make your choice"
+    ],
+    "YOU_CHOSE_RPS": [
+	"You chose {{rps}}",
+	"You picked {{rps}}",
+	"OK, {{rps}}",
+	"OK, {{rps}} it is!"
+    ]
+  }
+}

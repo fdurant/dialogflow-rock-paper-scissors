@@ -4,6 +4,7 @@
     "description": "A toy voice app built with the Jovo framework",
     "main": "index.js",
     "dependencies": {
+	"sprintf-js": "^1.1.1",
 	"jovo-framework": "^1.0.0"
     },
     "devDependencies": {},

@@ -1,0 +1,61 @@
+{  
+    "invocation":"mon app de test",
+    "intents":[  
+        {  
+            "name":"RockPaperScissorsQuestionIntent",
+	    "phrases":[],
+	    "dialogflow": {
+		"priority":1,
+		"webhookForSlotFilling":true
+	    },
+	    "inputs":[]
+	},
+        {  
+            "name":"RockPaperScissorsChoiceIntent",
+            "phrases":[  
+                "{rps}",
+                "je choisis un {rps}",
+                "je veux une {rps}",
+                "donne moi un {rps}",
+                "mon choix est une {rps}",
+                "{rps} c'est ce que je veux",
+                "{rps} c'est mon choix"
+            ],
+            "inputs":[  
+                {  
+                    "name":"rps",
+                    "type":"myRockPaperScissorsInputType"
+                }
+            ]
+        }
+    ],
+    "inputTypes": [
+	{
+	    "name": "myRockPaperScissorsInputType",
+	    "values": [
+		{
+		    "value": "rock",
+		    "synonyms": [
+			"pierre",
+			"cailloux"
+		    ]
+		},
+		{
+		    "value": "paper",
+		    "synonyms": [
+			"feuille",
+			"feuille de papier",
+			"papier"
+		    ]
+		},
+		{
+		    "value": "scissors",
+		    "synonyms": [
+			"ciseau",
+			"ciseaux"
+		    ]
+		}
+	    ]
+	}
+    ]
+}

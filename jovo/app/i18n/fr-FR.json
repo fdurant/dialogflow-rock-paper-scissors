@@ -1,0 +1,17 @@
+{
+  "translation": {
+    "RPS_QUESTION": [
+      "Pierre, papier, ciseaux? Faites votre choix.", 
+      "Pierre, papier, ciseaux? Allez-y!", 
+      "Pierre, papier ciseaux?", 
+      "Pierre, papier ou ciseaux?", 
+      "Pierre, papier, ciseaux? Je vous écoute!"
+    ],
+    "YOU_CHOSE_RPS": [
+	"Vous avez choisi {{rps}}",
+	"Vous avez pris {{rps}}",
+	"D'accord, {{rps}}",
+	"{{rps}}, d'accord!!"
+    ]
+  }
+}

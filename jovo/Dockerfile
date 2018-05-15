@@ -26,7 +26,7 @@ RUN gcloud auth activate-service-account --key-file /usr/src/jovo/"$GOOGLE_APPLI
     gcloud config set project "$PROJECTID"
 
 # Prepare app directory
-RUN mkdir -p /usr/src/jovo/app /usr/src/jovo/models
+RUN mkdir -p /usr/src/jovo/app/i18n /usr/src/jovo/models
 
 # Copy config files for npm and bower
 ADD ${DIRNAME}/package.json /usr/src/
@@ -39,6 +39,7 @@ RUN npm install -g jovo-cli && \
 # Copy frequently changing app and model files
 COPY ${DIRNAME}/index.js /usr/src/jovo/
 COPY ${DIRNAME}/app/*.js /usr/src/jovo/app/
+COPY ${DIRNAME}/app/i18n/*.json /usr/src/jovo/app/i18n/
 COPY ${DIRNAME}/models/*.json /usr/src/jovo/models/
 
 # Build the app and the models

@@ -1,0 +1,61 @@
+{  
+    "invocation":"mijn test app",
+    "intents":[  
+        {  
+            "name":"RockPaperScissorsQuestionIntent",
+	    "phrases":[],
+	    "dialogflow": {
+		"priority":1,
+		"webhookForSlotFilling":true
+	    },
+	    "inputs":[]
+	},
+        {  
+            "name":"RockPaperScissorsChoiceIntent",
+            "phrases":[  
+                "{rps}",
+                "ik kies {rps}",
+                "ik wil {rps}",
+                "geef mij {rps}",
+                "geef mij maar {rps}",
+                "{rps} is wat ik kies"
+            ],
+            "inputs":[  
+                {  
+                    "name":"rps",
+                    "type":"myRockPaperScissorsInputType"
+                }
+            ]
+        }
+    ],
+    "inputTypes": [
+	{
+	    "name": "myRockPaperScissorsInputType",
+	    "values": [
+		{
+		    "value": "rock",
+		    "synonyms": [
+			"steen",
+			"rots"
+		    ]
+		},
+		{
+		    "value": "paper",
+		    "synonyms": [
+			"papier",
+			"blad",
+			"blad papier",
+			"blaadje papier"
+		    ]
+		},
+		{
+		    "value": "scissors",
+		    "synonyms": [
+			"schaar",
+			"scharen"
+		    ]
+		}
+	    ]
+	}
+    ]
+}

@@ -1,0 +1,19 @@
+{
+  "translation": {
+    "RPS_QUESTION": [
+      "Schaar, steen of papier? Kies er één van", 
+      "Schaar, steen, papier? Maak je keuze",
+      "Schaar, steen, papier?",
+      "Schaar, steen, papier? Kies maar",
+      "Schaar, steen, of papier?",
+      "Schaar, steen, of papier? Kies maar"
+    ],
+    "YOU_CHOSE_RPS": [
+	"Je koos {{rps}}",
+	"Je nam {{rps}}",
+	"OK, {{rps}}",
+	"{{rps}}, interessante keuze!",
+	"Goed, {{rps}} it is!"
+    ]
+  }
+}
