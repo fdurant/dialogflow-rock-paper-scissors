@@ -5,6 +5,7 @@
     "main": "index.js",
     "dependencies": {
 	"sprintf-js": "^1.1.1",
+	"jsonpath": "^1.0.0",
 	"jovo-framework": "^1.0.0"
     },
     "devDependencies": {},

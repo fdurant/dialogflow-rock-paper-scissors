@@ -8,10 +8,25 @@
       "Pierre, papier, ciseaux? Je vous écoute!"
     ],
     "YOU_CHOSE_RPS": [
-	"Vous avez choisi {{rps}}",
-	"Vous avez pris {{rps}}",
-	"D'accord, {{rps}}",
-	"{{rps}}, d'accord!!"
+	"Vous avez choisi {{rps}}."
+    ],
+    "I_CHOSE_ROCK": [
+	"moi pierre."
+    ],
+    "I_CHOSE_PAPER": [
+	"moi papier."
+    ],
+    "I_CHOSE_SCISSORS": [
+	"moi ciseaux."
+    ],
+    "I_WIN": [
+	"moi je gagne!"
+    ],
+    "YOU_WIN": [
+	"toi tu gagnes!"
+    ],
+    "NOONE_WINS": [
+	"c'est match nul!"
     ]
   }
 }

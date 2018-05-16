@@ -34,14 +34,18 @@
 	    "name": "myRockPaperScissorsInputType",
 	    "values": [
 		{
-		    "value": "rock",
+		    "value": "pierre",
+		    "xlangValue": "rock",
+		    "genericId" : 0,
 		    "synonyms": [
 			"pierre",
 			"cailloux"
 		    ]
 		},
 		{
-		    "value": "paper",
+		    "value": "papier",
+		    "xlangValue": "paper",
+		    "genericId" : 1,
 		    "synonyms": [
 			"feuille",
 			"feuille de papier",
@@ -49,7 +53,9 @@
 		    ]
 		},
 		{
-		    "value": "scissors",
+		    "value": "ciseaux",
+		    "xlangValue": "scissors",
+		    "genericId" : 2,
 		    "synonyms": [
 			"ciseau",
 			"ciseaux"

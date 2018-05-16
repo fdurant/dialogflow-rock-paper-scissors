@@ -34,12 +34,16 @@
 	    "values": [
 		{
 		    "value": "rock",
+		    "xlangValue": "rock",
+		    "genericId" : 0,
 		    "synonyms": [
 			"stone"
 		    ]
 		},
 		{
 		    "value": "paper",
+		    "xlangValue": "paper",
+		    "genericId" : 1,
 		    "synonyms": [
 			"sheet",
 			"sheet of paper",
@@ -48,6 +52,8 @@
 		},
 		{
 		    "value": "scissors",
+		    "xlangValue": "scissors",
+		    "genericId" : 2,
 		    "synonyms": [
 			"scissor"
 		    ]

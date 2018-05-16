@@ -6,10 +6,26 @@
       "Rock, paper or scissors? Make your choice"
     ],
     "YOU_CHOSE_RPS": [
-	"You chose {{rps}}",
-	"You picked {{rps}}",
-	"OK, {{rps}}",
-	"OK, {{rps}} it is!"
+	"You chose {{rps}}.",
+	"You picked {{rps}}."
+    ],
+    "I_CHOSE_ROCK": [
+	"I chose rock."
+    ],
+    "I_CHOSE_PAPER": [
+	"I chose paper."
+    ],
+    "I_CHOSE_SCISSORS": [
+	"I chose scissors."
+    ],
+    "I_WIN": [
+	"i win!"
+    ],
+    "YOU_WIN": [
+	"you win!"
+    ],
+    "NOONE_WINS": [
+	"it's a draw!"
     ]
   }
 }

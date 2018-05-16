@@ -9,11 +9,26 @@
       "Schaar, steen, of papier? Kies maar"
     ],
     "YOU_CHOSE_RPS": [
-	"Je koos {{rps}}",
-	"Je nam {{rps}}",
-	"OK, {{rps}}",
-	"{{rps}}, interessante keuze!",
-	"Goed, {{rps}} it is!"
+	"Jij koos {{rps}}.",
+	"Jij nam {{rps}}."
+    ],
+    "I_CHOSE_ROCK": [
+	"ik steen."
+    ],
+    "I_CHOSE_PAPER": [
+	"ik papier."
+    ],
+    "I_CHOSE_SCISSORS": [
+	"ik schaar."
+    ],
+    "I_WIN": [
+	"ik win!"
+    ],
+    "YOU_WIN": [
+	"jij wint!"
+    ],
+    "NOONE_WINS": [
+	"gelijkspel!"
     ]
   }
 }
