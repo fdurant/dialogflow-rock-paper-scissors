@@ -1,32 +1,35 @@
 {
   "translation": {
     "RPS_QUESTION": [
-      "Pierre, papier, ciseaux? Faites votre choix.", 
-      "Pierre, papier, ciseaux? Allez-y!", 
+      "Pierre, papier, ciseaux? Fais ton choix.", 
+      "Pierre, papier, ciseaux? Vas-y!", 
       "Pierre, papier ciseaux?", 
       "Pierre, papier ou ciseaux?", 
-      "Pierre, papier, ciseaux? Je vous écoute!"
+      "Pierre, papier, ciseaux? Je t'écoute!"
     ],
     "YOU_CHOSE_RPS": [
-	"Vous avez choisi {{rps}}."
+	"Tu as choisi {{rps}}."
+    ],
+    "ME_TOO": [
+	"Moi aussi."
     ],
     "I_CHOSE_ROCK": [
-	"moi pierre."
+	"Moi pierre."
     ],
     "I_CHOSE_PAPER": [
-	"moi papier."
+	"Moi papier."
     ],
     "I_CHOSE_SCISSORS": [
-	"moi ciseaux."
+	"Moi ciseaux."
     ],
     "I_WIN": [
-	"moi je gagne!"
+	"J'ai gagné!"
     ],
     "YOU_WIN": [
-	"toi tu gagnes!"
+	"Félicitations, tu as gagné!"
     ],
     "NOONE_WINS": [
-	"c'est match nul!"
+	"Match nul!"
     ]
   }
 }

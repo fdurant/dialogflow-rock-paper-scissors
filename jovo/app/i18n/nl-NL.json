@@ -12,23 +12,26 @@
 	"Jij koos {{rps}}.",
 	"Jij nam {{rps}}."
     ],
+    "ME_TOO": [
+	"Ik ook."
+    ],
     "I_CHOSE_ROCK": [
-	"ik steen."
+	"Ik steen."
     ],
     "I_CHOSE_PAPER": [
-	"ik papier."
+	"Ik papier."
     ],
     "I_CHOSE_SCISSORS": [
-	"ik schaar."
+	"Ik schaar."
     ],
     "I_WIN": [
-	"ik win!"
+	"Ik heb gewonnen!"
     ],
     "YOU_WIN": [
-	"jij wint!"
+	"Proficiat, jij hebt gewonnen!"
     ],
     "NOONE_WINS": [
-	"gelijkspel!"
+	"Gelijkspel!"
     ]
   }
 }

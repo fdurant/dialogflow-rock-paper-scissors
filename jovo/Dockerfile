@@ -14,7 +14,8 @@ RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch main" | \
 
 RUN apt-get update && \
     apt-get install -y zip unzip && \
-    apt-get install -y google-cloud-sdk
+    apt-get install -y google-cloud-sdk && \
+    mkdir -p /usr/src/jovo/app/i18n /usr/src/jovo/models
 
 # Set up authorizations for Google Cloud
 # Inspired by https://stackoverflow.com/questions/37428287/not-able-to-perform-gcloud-init-inside-dockerfile
@@ -24,9 +25,6 @@ COPY ./${GOOGLE_APPLICATION_CREDENTIALS_SOURCE} /usr/src/jovo/
 RUN gcloud auth activate-service-account --key-file /usr/src/jovo/"$GOOGLE_APPLICATION_CREDENTIALS_SOURCE" && \
     rm -f /usr/src/jovo/"$GOOGLE_APPLICATION_CREDENTIALS_SOURCE" && \
     gcloud config set project "$PROJECTID"
-
-# Prepare app directory
-RUN mkdir -p /usr/src/jovo/app/i18n /usr/src/jovo/models
 
 # Copy config files for npm and bower
 ADD ${DIRNAME}/package.json /usr/src/

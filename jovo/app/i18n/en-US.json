@@ -9,6 +9,9 @@
 	"You chose {{rps}}.",
 	"You picked {{rps}}."
     ],
+    "ME_TOO": [
+	"Me too."
+    ],
     "I_CHOSE_ROCK": [
 	"I chose rock."
     ],
@@ -19,13 +22,13 @@
 	"I chose scissors."
     ],
     "I_WIN": [
-	"i win!"
+	"I won!"
     ],
     "YOU_WIN": [
-	"you win!"
+	"Congratulations, you won!"
     ],
     "NOONE_WINS": [
-	"it's a draw!"
+	"It's a draw!"
     ]
   }
 }

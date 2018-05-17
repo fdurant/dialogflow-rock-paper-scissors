@@ -85,27 +85,7 @@ app.setHandler({
 //	console.log('model = i18n_models');
 //	console.log();
 
-	var myChoice = Math.floor(Math.random() * Math.floor(3)) // 0, 1 or 2
-	switch(myChoice) {
-	case 0:
-	    speech.addT('I_CHOSE_ROCK');
-	    break;
-	case 1:
-	    speech.addT('I_CHOSE_PAPER');
-	    break;	    
-	case 2:
-	    speech.addT('I_CHOSE_SCISSORS');
-	    break;
-	}
-
 	// Get the user generic ID of the RPS chosen by the user from the i18N_models
-/*	console.log("this.requestObj = ");
-	console.log(this.requestObj);
-	console.log("this.requestObj.queryResult = ");
-	console.log(this.requestObj.queryResult);
-	console.log("this.requestObj.queryResult.languageCode = ");
-	console.log(this.requestObj.queryResult.languageCode);
-*/
 	var langCode = this.requestObj.queryResult.languageCode;
 	console.log("langCode = " + langCode);
 	console.log("this.config.i18n.models[langCode] = ");
@@ -119,6 +99,25 @@ app.setHandler({
 	var rpsGenericId = rpsEntity.genericId
 	console.log("rpsGenericId = ");
 	console.log(rpsGenericId);
+
+	var myChoice = Math.floor(Math.random() * Math.floor(3)) // 0, 1 or 2
+	if (rpsGenericId == myChoice) {
+	    speech.addT('ME_TOO');
+	}
+	else {
+	    switch(myChoice) {
+	    case 0:
+		speech.addT('I_CHOSE_ROCK');
+		break;
+	    case 1:
+		speech.addT('I_CHOSE_PAPER');
+		break;	    
+	    case 2:
+		speech.addT('I_CHOSE_SCISSORS');
+		break;
+	    }
+	}
+
 	var winner = whoWon(rpsGenericId,myChoice);
 	switch (winner) {
 	case 'me':
