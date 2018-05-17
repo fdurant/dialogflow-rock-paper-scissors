@@ -1,5 +1,6 @@
 'use strict';
 var assert = require('assert');
+var jp = require('jsonpath');
 
 function whoWon(yourChoice, myChoice) {
     // returns 'you', 'me' or 'noone'
@@ -50,4 +51,21 @@ function whoWon(yourChoice, myChoice) {
     }
 }
 
+
+function getInputTypeAttribute(i18n_models, langCode, inputType, attributeName, entity) {
+    console.log("i18n_models[langCode] = ");
+    console.log(i18n_models[langCode]);
+    var inputType = jp.query(i18n_models[langCode], '$.inputTypes[?(@.name=="'+inputType+'")]')[0]
+    console.log("inputType = ");
+    console.log(inputType);
+    var entity = jp.query(inputType, '$.values[?(@.value=="'+entity.value+'")]')[0]
+    console.log("entity = ");
+    console.log(entity);
+    var result = entity[attributeName]
+    console.log("result = ");
+    console.log(result);
+    return result;
+}
+
 module.exports.whoWon = whoWon;
+module.exports.getInputTypeAttribute = getInputTypeAttribute;

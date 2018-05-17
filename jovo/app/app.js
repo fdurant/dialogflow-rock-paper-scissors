@@ -1,7 +1,7 @@
 'use strict';
 var sprintf = require('sprintf-js').sprintf;
-var jp = require('jsonpath');
 var whoWon = require('./utils').whoWon;
+var getInputTypeAttribute = require('./utils').getInputTypeAttribute;
 
 // =================================================================================
 // App Configuration
@@ -73,32 +73,24 @@ app.setHandler({
     },
 
     'RockPaperScissorsChoiceIntent': function(rps) {
-	console.log("this = ");
-	console.log(this);
+//	console.log("this = ");
+//	console.log(this);
 //	console.log("this.config.i18n.resources = ");
 //	console.log(this.config.i18n.resources);
-	console.log("this.config.i18n.models = ");
-	console.log(this.config.i18n.models);
+//	console.log("this.config.i18n.models = ");
+//	console.log(this.config.i18n.models);
 	var speech = this.speechBuilder().addT('YOU_CHOSE_RPS', {rps: rps.value});
-	console.log('rps =');
-	console.log(rps);
+//	console.log('rps =');
+//	console.log(rps);
 //	console.log('model = i18n_models');
 //	console.log();
 
 	// Get the user generic ID of the RPS chosen by the user from the i18N_models
-	var langCode = this.requestObj.queryResult.languageCode;
-	console.log("langCode = " + langCode);
-	console.log("this.config.i18n.models[langCode] = ");
-	console.log(this.config.i18n.models[langCode]);
-	var rpsInputType = jp.query(this.config.i18n.models[langCode], '$.inputTypes[?(@.name=="myRockPaperScissorsInputType")]')[0]
-	console.log("rpsInputType = ");
-	console.log(rpsInputType);
-	var rpsEntity = jp.query(rpsInputType, '$.values[?(@.value=="'+rps.value+'")]')[0]
-	console.log("rpsEntity = ");
-	console.log(rpsEntity);
-	var rpsGenericId = rpsEntity.genericId
-	console.log("rpsGenericId = ");
-	console.log(rpsGenericId);
+	var rpsGenericId = getInputTypeAttribute(this.config.i18n.models, 
+						 this.requestObj.queryResult.languageCode, 
+						 'myRockPaperScissorsInputType', 
+						 'genericId',
+						 rps);
 
 	var myChoice = Math.floor(Math.random() * Math.floor(3)) // 0, 1 or 2
 	if (rpsGenericId == myChoice) {

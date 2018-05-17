@@ -36,9 +36,9 @@ RUN npm install -g jovo-cli && \
 
 # Copy frequently changing app and model files
 COPY ${DIRNAME}/index.js /usr/src/jovo/
-COPY ${DIRNAME}/app/*.js /usr/src/jovo/app/
 COPY ${DIRNAME}/app/i18n/*.json /usr/src/jovo/app/i18n/
 COPY ${DIRNAME}/models/*.json /usr/src/jovo/models/
+COPY ${DIRNAME}/app/*.js /usr/src/jovo/app/
 
 # Build the app and the models
 # create dialogflow_agent.zip locally
