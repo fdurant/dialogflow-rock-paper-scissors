@@ -29,6 +29,11 @@
     ],
     "NOONE_WINS": [
 	"It's a draw!"
+    ],
+    "LETS_PLAY_AGAIN": [
+	"Let's play again.",
+	"New game.",
+	"Let's continue."
     ]
   }
 }

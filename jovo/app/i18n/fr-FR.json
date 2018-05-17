@@ -30,6 +30,11 @@
     ],
     "NOONE_WINS": [
 	"Match nul!"
+    ],
+    "LETS_PLAY_AGAIN": [
+	"Jouons à nouveau!",
+	"Nouveau jeu!",
+	"On continue!"
     ]
   }
 }

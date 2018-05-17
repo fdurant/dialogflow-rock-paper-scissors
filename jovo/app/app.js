@@ -28,11 +28,14 @@ const models_nl = require('../models/nl-NL');
 
 let i18n_models = {
     'nl': models_nl,
+    'nl-nl': models_nl,
     'nl-NL': models_nl,
     'fr': models_fr,
+    'fr-fr': models_fr,
     'fr-FR': models_fr,
     'en': models_en,
-    'en-US': models_en    
+    'en-us': models_en,
+    'en-US': models_en
 }
 
 // See https://www.jovo.tech/framework/docs/output/i18n
@@ -57,73 +60,95 @@ app.setLanguageResources(i18n_prompts);
 
 app.setHandler({
     'LAUNCH': function() {
-        this.toIntent('RockPaperScissorsQuestionIntent');
+        this.toStateIntent('GameState', 'RockPaperScissorsQuestionIntent');	
     },
 
     'Default Fallback Intent': function() {
-        this.toIntent('RockPaperScissorsQuestionIntent');
+        this.toStateIntent('GameState', 'RockPaperScissorsQuestionIntent');	
     },
 
     'Default Welcome Intent': function() {
-        this.toIntent('RockPaperScissorsQuestionIntent');
+        this.toStateIntent('GameState', 'RockPaperScissorsQuestionIntent');	
     },
 
-    'RockPaperScissorsQuestionIntent': function() {
-	this.ask(this.speechBuilder().addT('RPS_QUESTION'));
-    },
+    'GameState': {
 
-    'RockPaperScissorsChoiceIntent': function(rps) {
-//	console.log("this = ");
-//	console.log(this);
+	'RockPaperScissorsQuestionIntent': function() {
+	    this.ask(this.speechBuilder().addT('RPS_QUESTION'));
+	},
+	
+	'RockPaperScissorsChoiceIntent': function(rps) {
+	    
+	    if (rps.value == undefined || rps.value == null || rps.value == '') {
+		console.log("No valid RPS choice!!");
+		this.toIntent('RockPaperScissorsQuestionIntent');
+		return;
+	    };
+	    
+	    //	console.log("this = ");
+	    //	console.log(this);
 //	console.log("this.config.i18n.resources = ");
-//	console.log(this.config.i18n.resources);
-//	console.log("this.config.i18n.models = ");
-//	console.log(this.config.i18n.models);
-	var speech = this.speechBuilder().addT('YOU_CHOSE_RPS', {rps: rps.value});
-//	console.log('rps =');
+	    //	console.log(this.config.i18n.resources);
+	    //	console.log("this.config.i18n.models = ");
+	    //	console.log(this.config.i18n.models);
+	    var speech = this.speechBuilder().addT('YOU_CHOSE_RPS', {rps: rps.value});
+	    //	console.log('rps =');
 //	console.log(rps);
-//	console.log('model = i18n_models');
-//	console.log();
+	    //	console.log('model = i18n_models');
+	    //	console.log();
 
 	// Get the user generic ID of the RPS chosen by the user from the i18N_models
-	var rpsGenericId = getInputTypeAttribute(this.config.i18n.models, 
-						 this.requestObj.queryResult.languageCode, 
-						 'myRockPaperScissorsInputType', 
-						 'genericId',
-						 rps);
-
-	var myChoice = Math.floor(Math.random() * Math.floor(3)) // 0, 1 or 2
-	if (rpsGenericId == myChoice) {
-	    speech.addT('ME_TOO');
-	}
-	else {
-	    switch(myChoice) {
-	    case 0:
-		speech.addT('I_CHOSE_ROCK');
+	    var rpsGenericId = getInputTypeAttribute(this.config.i18n.models, 
+						     this.requestObj.queryResult.languageCode, 
+						     'myRockPaperScissorsInputType', 
+						     'genericId',
+						     rps);
+	    
+	    var myChoice = Math.floor(Math.random() * Math.floor(3)) // 0, 1 or 2
+	    if (rpsGenericId == myChoice) {
+		speech.addT('ME_TOO');
+	    }
+	    else {
+		switch(myChoice) {
+		case 0:
+		    speech.addT('I_CHOSE_ROCK');
+		    break;
+		case 1:
+		    speech.addT('I_CHOSE_PAPER');
+		    break;	    
+		case 2:
+		    speech.addT('I_CHOSE_SCISSORS');
+		    break;
+		}
+	    }
+	    
+	    var winner = whoWon(rpsGenericId,myChoice);
+	    switch (winner) {
+	    case 'me':
+		speech.addT('I_WIN');
 		break;
-	    case 1:
-		speech.addT('I_CHOSE_PAPER');
-		break;	    
-	    case 2:
-		speech.addT('I_CHOSE_SCISSORS');
+	    case 'you':
+		speech.addT('YOU_WIN');
+		break;
+	    case 'noone':
+		speech.addT('NOONE_WINS');
 		break;
 	    }
+	    
+	    speech.addBreak('300ms');
+	    speech.addT('LETS_PLAY_AGAIN');
+	    this.followUpState('PlayAgainState')
+		.tell(speech);
+	    
 	}
-
-	var winner = whoWon(rpsGenericId,myChoice);
-	switch (winner) {
-	case 'me':
-	    speech.addT('I_WIN');
-	    break;
-	case 'you':
-	    speech.addT('YOU_WIN');
-	    break;
-	case 'noone':
-	    speech.addT('NOONE_WINS');
-	    break;
+	
+    },
+    
+    'PlayAgainState': {
+	
+	'END' : function() {   
+            this.toStateIntent('GameState', 'RockPaperScissorsQuestionIntent');	
 	}
-
-	this.tell(speech);
     }
 
 });

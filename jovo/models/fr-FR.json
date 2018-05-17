@@ -1,5 +1,5 @@
 {  
-    "invocation":"mon app de test",
+    "invocation":"pierre papier ciseaux",
     "intents":[  
         {  
             "name":"RockPaperScissorsQuestionIntent",

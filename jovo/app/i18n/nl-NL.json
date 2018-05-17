@@ -32,6 +32,11 @@
     ],
     "NOONE_WINS": [
 	"Gelijkspel!"
+    ],
+    "LETS_PLAY_AGAIN": [
+	"Nog een spelletje.",
+	"Opnieuw.",
+	"En we spelen opnieuw"
     ]
   }
 }
