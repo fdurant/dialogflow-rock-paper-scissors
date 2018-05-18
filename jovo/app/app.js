@@ -78,6 +78,8 @@ app.setHandler({
 	},
 	
 	'RockPaperScissorsChoiceIntent': function(rps) {
+
+	    console.log("Inside 'GameState.RockPaperScissorsChoiceIntent'");
 	    
 	    if (rps.value == undefined || rps.value == null || rps.value == '') {
 		console.log("No valid RPS choice!!");
@@ -137,20 +139,13 @@ app.setHandler({
 	    
 	    speech.addBreak('300ms');
 	    speech.addT('LETS_PLAY_AGAIN');
-	    this.followUpState('PlayAgainState')
-		.tell(speech);
+	    speech.addT('RPS_QUESTION')
+	    this.ask(speech);
 	    
 	}
 	
-    },
-    
-    'PlayAgainState': {
-	
-	'END' : function() {   
-            this.toStateIntent('GameState', 'RockPaperScissorsQuestionIntent');	
-	}
     }
-
+    
 });
 
 module.exports.app = app;
