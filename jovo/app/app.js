@@ -60,6 +60,9 @@ app.setLanguageResources(i18n_prompts);
 
 app.setHandler({
     'LAUNCH': function() {
+	this.setSessionAttribute('NrGamesWonByUser', 0);
+	this.setSessionAttribute('NrGamesWonByAssistant', 0);
+	this.setSessionAttribute('NrDraws', 0);
         this.toStateIntent('GameState', 'RockPaperScissorsQuestionIntent');	
     },
 
@@ -87,19 +90,9 @@ app.setHandler({
 		return;
 	    };
 	    
-	    //	console.log("this = ");
-	    //	console.log(this);
-//	console.log("this.config.i18n.resources = ");
-	    //	console.log(this.config.i18n.resources);
-	    //	console.log("this.config.i18n.models = ");
-	    //	console.log(this.config.i18n.models);
 	    var speech = this.speechBuilder().addT('YOU_CHOSE_RPS', {rps: rps.value});
-	    //	console.log('rps =');
-//	console.log(rps);
-	    //	console.log('model = i18n_models');
-	    //	console.log();
 
-	// Get the user generic ID of the RPS chosen by the user from the i18N_models
+	    // Get the user generic ID of the RPS chosen by the user from the i18N_models
 	    var rpsGenericId = getInputTypeAttribute(this.config.i18n.models, 
 						     this.requestObj.queryResult.languageCode, 
 						     'myRockPaperScissorsInputType', 
@@ -127,25 +120,53 @@ app.setHandler({
 	    var winner = whoWon(rpsGenericId,myChoice);
 	    switch (winner) {
 	    case 'me':
+		this.setSessionAttribute('NrGamesWonByAssistant', this.getSessionAttribute('NrGamesWonByAssistant') + 1);
 		speech.addT('I_WIN');
 		break;
 	    case 'you':
+		this.setSessionAttribute('NrGamesWonByUser', this.getSessionAttribute('NrGamesWonByUser') + 1);
 		speech.addT('YOU_WIN');
 		break;
 	    case 'noone':
+		this.setSessionAttribute('NrDraws', this.getSessionAttribute('NrDraws') + 1);
 		speech.addT('NOONE_WINS');
 		break;
 	    }
 	    
 	    speech.addBreak('800ms');
-//	    speech.addT('LETS_PLAY_AGAIN');
 	    speech.addT('RPS_QUESTION')
 	    this.ask(speech);
 	    
+	},
+
+	'RockPaperScissorsShowScore': function() {
+	    var speech = this.speechBuilder().addT('SHOW_SCORE', {you: this.getSessionAttribute('NrGamesWonByUser'),
+								  you_s: this.getSessionAttribute('NrGamesWonByUser') == 1 ? '':'s',
+								  me: this.getSessionAttribute('NrGamesWonByAssistant'),
+								  me_s: this.getSessionAttribute('NrGamesWonByAssistant') == 1 ? '':'s',
+								  draw: this.getSessionAttribute('NrDraws'),
+								  draw_s: this.getSessionAttribute('NrDraws') == 1 ? '':'s'
+								 });
+	    
+	    speech.addBreak('300ms');
+
+	    if (this.getSessionAttribute('NrGamesWonByUser') < this.getSessionAttribute('NrGamesWonByAssistant')) {
+		speech.addT('I_WIN_SOFAR');
+	    }
+	    else if (this.getSessionAttribute('NrGamesWonByUser') > this.getSessionAttribute('NrGamesWonByAssistant')) {
+		speech.addT('YOU_WIN_SOFAR');
+	    }
+	    else {	
+		speech.addT('NOONE_WINS_SOFAR');
+	    }
+	    
+	    speech.addBreak('800ms');
+	    speech.addT('RPS_QUESTION')
+	    this.ask(speech);
 	}
 	
     }
     
 });
-
+ 
 module.exports.app = app;

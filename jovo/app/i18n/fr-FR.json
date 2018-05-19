@@ -31,6 +31,20 @@
 	"Jouons à nouveau!",
 	"Nouveau jeu!",
 	"On continue!"
+    ],
+    "SHOW_SCORE": [
+	"Tu as gagné {{you}} jeux, moi {{me}}, avec {{draw}} match nul."
+    ],
+    "I_WIN_SOFAR": [
+	"Jusqu'ici c'est moi qui gagne!",
+	"Jusqu'ici c'est moi le champion!"
+    ],
+    "YOU_WIN_SOFAR": [
+	"Jusqu'ici c'est toi qui gagnes!",
+	"Jusqu'ici c'est toi le champion!"
+    ],
+    "NOONE_WINS_SOFAR": [
+	"Donc jusqu'ici on fait match nul!"
     ]
   }
 }

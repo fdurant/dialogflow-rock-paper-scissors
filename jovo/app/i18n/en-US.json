@@ -8,7 +8,7 @@
     ],
     "ME_TOO": [
 	"So did I.",
-	"Me too"
+	"Me too."
     ],
     "I_CHOSE_ROCK": [
 	"I chose rock."
@@ -32,6 +32,20 @@
 	"Let's play again.",
 	"New game.",
 	"Let's continue."
-    ]
+    ],
+    "SHOW_SCORE": [
+	"You won {{you}} game{{you_s}} so far, I won {{me}}, with {{draw}} draw{{draw_s}}."
+    ],
+    "I_WIN_SOFAR": [
+	"I win so far!",
+	"I'm the champ so far!"
+    ],
+    "YOU_WIN_SOFAR": [
+	"You win so far!",
+	"You're the champ so far!"
+    ],
+    "NOONE_WINS_SOFAR": [
+	"It's an overall draw so far!"
+    ]      
   }
 }

@@ -53,17 +53,17 @@ function whoWon(yourChoice, myChoice) {
 
 
 function getInputTypeAttribute(i18n_models, langCode, inputType, attributeName, entity) {
-    console.log("i18n_models[langCode] = ");
-    console.log(i18n_models[langCode]);
+//    console.log("inputType = ");
+//    console.log(inputType);
     var inputType = jp.query(i18n_models[langCode], '$.inputTypes[?(@.name=="'+inputType+'")]')[0]
-    console.log("inputType = ");
-    console.log(inputType);
+//    console.log("i18n_models[langCode] = ");
+//    console.log(i18n_models[langCode]);
     var entity = jp.query(inputType, '$.values[?(@.value=="'+entity.value+'")]')[0]
-    console.log("entity = ");
-    console.log(entity);
+//    console.log("entity = ");
+//    console.log(entity);
     var result = entity[attributeName]
-    console.log("result = ");
-    console.log(result);
+//    console.log("result = ");
+//    console.log(result);
     return result;
 }
 

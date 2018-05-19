@@ -27,7 +27,46 @@
                     "type":"myRockPaperScissorsInputType"
                 }
             ]
-        }
+        },
+        {  
+            "name":"RockPaperScissorsShowScore",
+	    "phrases":[
+		"donne moi le score",
+		"comment je fais",
+		"le score s'il te plaît",
+		"quel est le score",
+		"qui gagne",
+		"c'est qui le gagnant",
+		"est-ce que je gagne",
+		"est-ce que je perds",
+		"c'est toi le gagnant",
+		"qui a gagné la plupart des jeux",
+		"combien de match nul",
+		"combien de fois ai-je gagné",
+		"combien de fois as-tu gagné",
+		"j'ai gagné combien de fois",
+		"tu as gagné combien de fois",
+		"combien de jeux ai-je gagné",
+		"combien de fois as-tu gagné",
+		"j'ai gagné combien de jeux",
+		"tu as gagné combien de jeux",
+		"quel est mon score jusqu'ici",
+		"c'est qui le meilleur",
+		"qui est le meilleur",
+		"c'est qui le perdant",
+		"qui est le champion",
+		"c'est qui le champion",
+		"c'est moi le champion",
+		"c'est toi le champion",
+		"est-ce moi le champion",
+		"est-ce toi le champion"
+	    ],
+	    "dialogflow": {
+		"priority":2,
+		"webhookForSlotFilling":true
+	    },
+	    "inputs":[]
+	}
     ],
     "inputTypes": [
 	{

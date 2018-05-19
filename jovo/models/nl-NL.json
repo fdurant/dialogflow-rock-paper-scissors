@@ -26,7 +26,40 @@
                     "type":"myRockPaperScissorsInputType"
                 }
             ]
-        }
+        },
+        {  
+            "name":"RockPaperScissorsShowScore",
+	    "phrases":[
+		"wat is de score",
+		"hoe doe ik het",
+		"score alsjeblieft",
+		"wat is de score",
+		"wie is aan het winnen",
+		"wie is de winnaar",
+		"ben ik aan het winnen",
+		"ben jij aan het winnen",
+		"wie heeft de meeste spelletjes gewonnen",
+		"hoe veel gelijke spelen",
+		"hoe veel gelijkspel",
+		"hoe vaak heb ik gewonnen",
+		"hoe vaak heb jij gewonnen",
+		"hoe dikwijls heb ik gewonnen",
+		"hoe dikwijls heb jij gewonnen",
+		"hoe veel spelletjes heb ik gewonnen",
+		"hoe veel spelletjes heb jij gewonnen",
+		"wat is mijn score tot dusver",
+		"wie is de beste",
+		"wie is de slechtste",
+		"wie is de kampioen",
+		"ben ik de kampioen",
+		"ben jij de kampioen"
+	    ],
+	    "dialogflow": {
+		"priority":2,
+		"webhookForSlotFilling":true
+	    },
+	    "inputs":[]
+	}
     ],
     "inputTypes": [
 	{

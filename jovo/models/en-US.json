@@ -26,7 +26,40 @@
                     "type":"myRockPaperScissorsInputType"
                 }
             ]
-        }
+        },
+        {  
+            "name":"RockPaperScissorsShowScore",
+	    "phrases":[
+		"give me the score",
+		"gimme the score",
+		"what's the score",
+		"how am i doing",
+		"score please",
+		"what is the score",
+		"who is winning",
+		"who's winning",
+		"am i winning",
+		"are you winning",
+		"who is the overall winner",
+		"how many draws",
+		"how often did i win",
+		"how often did you win",
+		"how many games have i won",
+		"how many games have you won",
+		"how many games did i win",
+		"how many games did you win",
+		"am i a loser",
+		"are you a loser",
+		"who's the champ",
+		"are you the champion",
+		"am i the champion"
+	    ],
+	    "dialogflow": {
+		"priority":2,
+		"webhookForSlotFilling":true
+	    },
+	    "inputs":[]
+	}
     ],
     "inputTypes": [
 	{

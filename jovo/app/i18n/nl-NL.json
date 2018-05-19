@@ -31,6 +31,20 @@
 	"Nog een spelletje.",
 	"Opnieuw.",
 	"En we spelen opnieuw"
-    ]
+    ],
+    "SHOW_SCORE": [
+	"Jij hebt tot nu {{you}} spelletje{{you_s}} gewonnen, ik {{me}}, en {{draw}} maal gelijk."
+    ],
+    "I_WIN_SOFAR": [
+	"Ik win tot dusver!",
+	"Tot nu toe ben ik de kampioen!"
+    ],
+    "YOU_WIN_SOFAR": [
+	"Jij wint tot dusver!",
+	"Jij bent de kampioen tot dusver!"
+    ],
+    "NOONE_WINS_SOFAR": [
+	"Tot dusver staan we gelijk!"
+    ]      
   }
 }
