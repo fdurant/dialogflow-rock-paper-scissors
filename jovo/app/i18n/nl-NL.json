@@ -1,16 +1,10 @@
 {
   "translation": {
     "RPS_QUESTION": [
-      "Schaar, steen of papier? Kies er één van", 
-      "Schaar, steen, papier? Maak je keuze",
-      "Schaar, steen, papier?",
-      "Schaar, steen, papier? Kies maar",
-      "Schaar, steen, of papier?",
-      "Schaar, steen, of papier? Kies maar"
+      "Schaar, steen, papier?"
     ],
     "YOU_CHOSE_RPS": [
-	"Jij koos {{rps}}.",
-	"Jij nam {{rps}}."
+	"Jij koos {{rps}}."
     ],
     "ME_TOO": [
 	"Ik ook."

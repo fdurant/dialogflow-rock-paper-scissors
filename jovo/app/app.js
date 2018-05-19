@@ -137,8 +137,8 @@ app.setHandler({
 		break;
 	    }
 	    
-	    speech.addBreak('300ms');
-	    speech.addT('LETS_PLAY_AGAIN');
+	    speech.addBreak('800ms');
+//	    speech.addT('LETS_PLAY_AGAIN');
 	    speech.addT('RPS_QUESTION')
 	    this.ask(speech);
 	    

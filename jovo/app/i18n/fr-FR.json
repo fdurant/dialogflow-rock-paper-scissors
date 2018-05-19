@@ -1,11 +1,7 @@
 {
   "translation": {
     "RPS_QUESTION": [
-      "Pierre, papier, ciseaux? Fais ton choix.", 
-      "Pierre, papier, ciseaux? Vas-y!", 
-      "Pierre, papier ciseaux?", 
-      "Pierre, papier ou ciseaux?", 
-      "Pierre, papier, ciseaux? Je t'écoute!"
+      "Pierre, papier, ciseaux?"
     ],
     "YOU_CHOSE_RPS": [
 	"Tu as choisi {{rps}}."
@@ -29,7 +25,7 @@
 	"Félicitations, tu as gagné!"
     ],
     "NOONE_WINS": [
-	"Match nul!"
+	"C'est match nul!"
     ],
     "LETS_PLAY_AGAIN": [
 	"Jouons à nouveau!",

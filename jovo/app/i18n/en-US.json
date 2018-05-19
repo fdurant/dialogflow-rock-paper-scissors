@@ -1,16 +1,14 @@
 {
   "translation": {
     "RPS_QUESTION": [
-      "Rock, paper or scissors? Pick one",
-      "Rock, paper or scissors?",
-      "Rock, paper or scissors? Make your choice"
+	"Rock, paper or scissors?"
     ],
     "YOU_CHOSE_RPS": [
-	"You chose {{rps}}.",
-	"You picked {{rps}}."
+	"You chose {{rps}}."
     ],
     "ME_TOO": [
-	"Me too."
+	"So did I.",
+	"Me too"
     ],
     "I_CHOSE_ROCK": [
 	"I chose rock."
