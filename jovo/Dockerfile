@@ -49,13 +49,17 @@ COPY ${DIRNAME}/models/*.json /usr/src/jovo/models/
 COPY ${DIRNAME}/app/*.js /usr/src/jovo/app/
 COPY ${DIRNAME}/*.sh /usr/src/jovo/
 
-# Syntax check on all JSON files
-RUN chmod +x /usr/src/jovo/json_check.sh && \
-    /usr/src/jovo/json_check.sh /usr/src/jovo/app/i18n/*.json /usr/src/jovo/models/*.json
-
 # To force Docker to start (re)building at least here, run this on the command line:
 # sudo FORCERERUNFROMHERE=`date -Iseconds` docker-compose up -d --build jovo
 ARG FORCERERUNFROMHERE
+RUN echo "{ \"timestamp\" : \"${FORCERERUNFROMHERE}\" }" > /usr/src/jovo/deployment.json && \
+    cat /usr/src/jovo/deployment.json
+
+# Syntax check on all JSON files
+RUN chmod +x /usr/src/jovo/json_check.sh && \
+    /usr/src/jovo/json_check.sh /usr/src/jovo/app/i18n/*.json \
+                                /usr/src/jovo/models/*.json \
+                                /usr/src/jovo/deployment.json
 
 # 1) Build the app and the models
 # 2) create fulfillment.zip locally, copy it to Google Cloud Storage, and deploy it as a Google Function 
@@ -71,7 +75,8 @@ RUN echo ${FORCERERUNFROMHERE} && \
     yaml2json functions_config.yaml > functions_config.json && \
     cat functions_config.json && \
     NEWURL=`json httpsTrigger.url < functions_config.json` && \
-    json -I -f platforms/googleAction/dialogflow/agent.json -e this.webhook.url="\"${NEWURL}\"" && \    
+    json -I -f platforms/googleAction/dialogflow/agent.json -e this.webhook.url="\"${NEWURL}\"" && \
+    json -I -f platforms/googleAction/dialogflow/agent.json -e this.supportedLanguages="[\"en\", \"fr\", \"nl\", \"fr-FR\", \"en-US\"]" && \
     cat platforms/googleAction/dialogflow/agent.json && \
     jovo deploy && \
     gsutil cp platforms/googleAction/dialogflow_agent.zip gs://${PROJECTID}.appspot.com/ && \
@@ -86,4 +91,4 @@ RUN echo ${FORCERERUNFROMHERE} && \
       --data-binary "{ 'agentUri': 'gs://${PROJECTID}.appspot.com/dialogflow_agent.zip'}"    
 
 # No more need to run this locally, since we've moved the fulfillment function to Google Functions
-#CMD jovo run
+CMD jovo run

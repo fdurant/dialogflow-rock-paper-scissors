@@ -31,6 +31,8 @@
         {  
             "name":"RockPaperScissorsShowScore",
 	    "phrases":[
+		"score",
+		"le score",
 		"donne moi le score",
 		"comment je fais",
 		"le score s'il te plaît",
@@ -62,7 +64,7 @@
 		"est-ce toi le champion"
 	    ],
 	    "dialogflow": {
-		"priority":2,
+		"priority":1,
 		"webhookForSlotFilling":true
 	    },
 	    "inputs":[]

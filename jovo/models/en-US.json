@@ -6,7 +6,7 @@
 	    "phrases":[],
 	    "dialogflow": {
 		"priority":1,
-		"webhookForSlotFilling":true
+		"webhookForSlotFilling":false
 	    },
 	    "inputs":[]
 	},
@@ -20,6 +20,10 @@
                 "gimme {rps}",
                 "{rps} is what i choose"
             ],
+	    "dialogflow": {
+		"priority":1,
+		"webhookForSlotFilling":true
+	    },
             "inputs":[  
                 {  
                     "name":"rps",
@@ -30,6 +34,8 @@
         {  
             "name":"RockPaperScissorsShowScore",
 	    "phrases":[
+		"score",
+		"the score",
 		"give me the score",
 		"gimme the score",
 		"what's the score",
@@ -55,8 +61,8 @@
 		"am i the champion"
 	    ],
 	    "dialogflow": {
-		"priority":2,
-		"webhookForSlotFilling":true
+		"priority":1,
+		"webhookForSlotFilling":false
 	    },
 	    "inputs":[]
 	}

@@ -78,6 +78,7 @@ app.setHandler({
     'GameState': {
 
 	'RockPaperScissorsQuestionIntent': function() {
+	    console.log("Inside 'GameState.RockPaperScissorsQuestionIntent'");
 	    this.ask(this.speechBuilder().addT('RPS_QUESTION'));
 	},
 	
@@ -86,7 +87,7 @@ app.setHandler({
 	    console.log("Inside 'GameState.RockPaperScissorsChoiceIntent'");
 	    
 	    if (rps.value == undefined || rps.value == null || rps.value == '') {
-		console.log("No valid RPS choice!!");
+		console.error("No valid RPS choice!!");
 		this.toIntent('RockPaperScissorsQuestionIntent');
 		return;
 	    };
@@ -141,6 +142,7 @@ app.setHandler({
 	},
 
 	'RockPaperScissorsShowScore': function() {
+	    console.log("Inside 'GameState.RockPaperScissorsShowScore'");
 	    var speech = this.speechBuilder().addT('SHOW_SCORE', {you: this.getSessionAttribute('NrGamesWonByUser'),
 								  you_s: this.getSessionAttribute('NrGamesWonByUser') == 1 ? '':'s',
 								  me: this.getSessionAttribute('NrGamesWonByAssistant'),
@@ -164,8 +166,17 @@ app.setHandler({
 	    speech.addBreak('800ms');
 	    speech.addT('RPS_QUESTION')
 	    this.ask(speech);
-	}
+	},
+
+	'Unhandled': function() {
+	    console.error("Inside 'GameState.Unhandled'");
+	    this.toIntent('RockPaperScissorsQuestionIntent');
+        }
 	
+    },
+
+    'END' : function() {
+        console.log("Inside 'END'");
     }
     
 });

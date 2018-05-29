@@ -30,10 +30,14 @@
         {  
             "name":"RockPaperScissorsShowScore",
 	    "phrases":[
+		"score",
+		"de score",
 		"wat is de score",
 		"hoe doe ik het",
 		"score alsjeblieft",
 		"wat is de score",
+		"wie wint",
+		"wie wint er",
 		"wie is aan het winnen",
 		"wie is de winnaar",
 		"ben ik aan het winnen",
@@ -55,7 +59,7 @@
 		"ben jij de kampioen"
 	    ],
 	    "dialogflow": {
-		"priority":2,
+		"priority":1,
 		"webhookForSlotFilling":true
 	    },
 	    "inputs":[]
