@@ -31,8 +31,16 @@ ADD ${DIRNAME}/package.json /usr/src/
 
 # Install dependencies
 WORKDIR /usr/src/jovo
-RUN npm install -g jovo-cli && \
-    npm install
+RUN npm init -y && \
+    npm install -g jovo-cli --save && \
+    npm install -g json && \
+    npm install -g yamljs && \
+    npm install jovo-framework --save && \
+    npm install sprintf-js --save && \
+    npm install assert --save && \
+    npm install jsonpath --save && \
+    npm install && \
+    cat package.json
 
 # Copy frequently changing app and model files
 COPY ${DIRNAME}/index.js /usr/src/jovo/
@@ -45,11 +53,27 @@ COPY ${DIRNAME}/*.sh /usr/src/jovo/
 RUN chmod +x /usr/src/jovo/json_check.sh && \
     /usr/src/jovo/json_check.sh /usr/src/jovo/app/i18n/*.json /usr/src/jovo/models/*.json
 
-# Build the app and the models
-# create dialogflow_agent.zip locally
-# copy the file to Google Cloud Storage
-# and import it into the DialogFlow agent via the DialogFlow Rest API
-RUN jovo init googleAction && jovo build && jovo deploy && \
+# To force Docker to start (re)building at least here, run this on the command line:
+# sudo FORCERERUNFROMHERE=`date -Iseconds` docker-compose up -d --build jovo
+ARG FORCERERUNFROMHERE
+
+# 1) Build the app and the models
+# 2) create fulfillment.zip locally, copy it to Google Cloud Storage, and deploy it as a Google Function 
+# 3) create dialogflow_agent.zip locally, copy it to Google Cloud Storage
+#    and import it into the DialogFlow agent via the DialogFlow Rest API
+RUN echo ${FORCERERUNFROMHERE} && \
+    jovo init googleAction && jovo build && \
+    zip fulfillment.zip ./index.js ./package.json ./app ./app.json ./models && \
+    gsutil cp fulfillment.zip gs://${PROJECTID}.appspot.com/ && \
+    gsutil ls -al gs://${PROJECTID}.appspot.com/fulfillment.zip && \
+    gcloud beta functions deploy index --trigger-http | tee functions_config.yaml && \
+    cat functions_config.yaml && \
+    yaml2json functions_config.yaml > functions_config.json && \
+    cat functions_config.json && \
+    NEWURL=`json httpsTrigger.url < functions_config.json` && \
+    json -I -f platforms/googleAction/dialogflow/agent.json -e this.webhook.url="\"${NEWURL}\"" && \    
+    cat platforms/googleAction/dialogflow/agent.json && \
+    jovo deploy && \
     gsutil cp platforms/googleAction/dialogflow_agent.zip gs://${PROJECTID}.appspot.com/ && \
     gsutil ls -al gs://${PROJECTID}.appspot.com/dialogflow_agent.zip && \
     curl \ 
@@ -59,9 +83,7 @@ RUN jovo init googleAction && jovo build && jovo deploy && \
       -H 'Accept: application/json' \ 
       -H 'Content-Type: application/json' \
       --compressed \ 
-      --data-binary "{ 'agentUri': 'gs://${PROJECTID}.appspot.com/dialogflow_agent.zip'}"
+      --data-binary "{ 'agentUri': 'gs://${PROJECTID}.appspot.com/dialogflow_agent.zip'}"    
 
-# Expose the app port
-EXPOSE 3000
-
-CMD jovo run
+# No more need to run this locally, since we've moved the fulfillment function to Google Functions
+#CMD jovo run

@@ -20,3 +20,7 @@ if (app.isWebhook()) {
 exports.handler = (event, context, callback) => {
     app.handleLambda(event, context, callback);
 };
+
+exports.index = (req, res) => {
+    app.handleWebhook(req, res);
+}

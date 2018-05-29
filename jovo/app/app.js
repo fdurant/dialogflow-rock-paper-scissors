@@ -48,6 +48,7 @@ const config = {
 	models: i18n_models // for my own use here
     },
     logging: true,
+    saveUserOnResponseEnabled: false // set to false because Google Functions' disk access is read-only
 };
 
 const app = new App(config);

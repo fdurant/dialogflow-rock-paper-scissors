@@ -16,6 +16,7 @@ services:
       args:
         - PROJECTID=${PROJECTID}
         - GOOGLE_APPLICATION_CREDENTIALS_SOURCE=${GOOGLE_APPLICATION_CREDENTIALS_SOURCE}
+        - FORCERERUNFROMHERE=${FORCERERUNFROMHERE}
     container_name: rock-paper-scissors_jovo
     env_file: .env
     secrets:
