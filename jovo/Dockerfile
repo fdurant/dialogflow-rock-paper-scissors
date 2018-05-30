@@ -76,7 +76,6 @@ RUN echo ${FORCERERUNFROMHERE} && \
     cat functions_config.json && \
     NEWURL=`json httpsTrigger.url < functions_config.json` && \
     json -I -f platforms/googleAction/dialogflow/agent.json -e this.webhook.url="\"${NEWURL}\"" && \
-    json -I -f platforms/googleAction/dialogflow/agent.json -e this.supportedLanguages="[\"en\", \"fr\", \"nl\", \"fr-FR\", \"en-US\"]" && \
     cat platforms/googleAction/dialogflow/agent.json && \
     jovo deploy && \
     gsutil cp platforms/googleAction/dialogflow_agent.zip gs://${PROJECTID}.appspot.com/ && \
